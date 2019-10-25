@@ -3,6 +3,7 @@
 ### Team Members:
 ```
 * Peter Jones - prjones@iastate.edu
+* Bailey Teply - bmteply@iastate.edu
 
 (Add Your name and email)
 ```

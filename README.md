@@ -5,6 +5,7 @@
 * Peter Jones - prjones@iastate.edu
 * Bailey Teply - bmteply@iastate.edu
 * Charlie Donaldson - charlesd@iastate.edu
+* Troy Jones - tbjones@iastate.edu
 
 (Add Your name and email)
 ```

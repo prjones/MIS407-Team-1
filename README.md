@@ -11,7 +11,8 @@
 ## Team Updates
 Here we will post team updates. Make sure when you edit this file and commit it, comment "Updated by ____ on _____" with your name and date updated so everyone knows to check for the update.
 > I have added a project tab where we can see what tasks we need to do and where we are at with the tasks. Once you start your current task, slide your card over to the "In Progress" section. 
-
+>
+>I have also uploaded several CSV Files. The Scooters file has the Scooter ID, Battery Percentage, Location, and Reservation Status (in that order by row). The Users file has the Username, First/Last Names, and Passwords (in that order by row).
 
 
 

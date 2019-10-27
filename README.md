@@ -6,7 +6,7 @@
 * Bailey Teply - bmteply@iastate.edu
 * Charlie Donaldson - charlesd@iastate.edu
 * Troy Jones - tbjones@iastate.edu
-* Joseph Yang - sims192@gmail.com
+* Joseph Yang - sims192@iastate.com
 (Add Your name and email)
 ```
 

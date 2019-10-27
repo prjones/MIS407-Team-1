@@ -22,8 +22,7 @@
 
 ## Upcoming Dates
 
-> 10/27/19 - First Meeting: _Gerdin 1pm_
-\
+
 > 10/31/19 - Project Proposal Due: _11:59 PM_
 
 

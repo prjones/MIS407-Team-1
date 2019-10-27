@@ -35,6 +35,7 @@ public class UserInterface {
 				stat.execute("DROP TABLE Distances");
 				stat.execute("DROP TABLE Users");
 				stat.execute("DROP TABLE Login");
+				//stat.execute("DROP TABLE Histories");
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
@@ -69,7 +70,6 @@ public class UserInterface {
 				stmt.setDouble(3, inDist.nextDouble());
 				stmt.executeUpdate();
 			}
-			// code from Troy starts
 			stat.execute(
 					"CREATE TABLE Users (Username VARCHAR(20), Password VARCHAR(20), NumberOfRides INT, PaymentMethod CHAR(16), TotalPayment DECIMAL(6,2), Reservation VARCHAR (20), Title VARCHAR(10), Status VARCHAR(3))");
 			String inputFileNameUser = "UserDatabase.txt";
@@ -89,6 +89,9 @@ public class UserInterface {
 				stmt.executeUpdate();
 			}
 			inUser.close();
+			
+			
+			
 			stat.execute("CREATE TABLE Login (LoginUsername VARCHAR(20))");
 			String checkUsername = "";
 			boolean login = true;
@@ -361,8 +364,11 @@ public class UserInterface {
 							"UPDATE Users SET NumberOfRides = NumberOfRides + 1 WHERE Username = '" + username + "'");
 					stat.execute("UPDATE Users SET TotalPayment = TotalPayment + " + price + " WHERE Username = '"
 							+ username + "'");
-					stat.execute("UPDATE Scooters Set CurrBattCharge = CurrBattCharge - " + chargeDecrease
+					stat.execute("UPDATE Scooters SET CurrBattCharge = CurrBattCharge - " + chargeDecrease
 							+ " WHERE ScooterID = '" + scooterID + "'");
+					//stat.execute("INSERT INTO History (User, Start, End, Distance, Price, RideType) VALUES ("+username+", "+location+", "+destStation+", "+distance+", "+price+", "+scooterID+", Ride)");
+					
+					//User, Start, End, Distance, Price, RideType
 					Scanner loginCheck = new Scanner(System.in);
 					System.out.println();
 					System.out.printf("%98s", "Do you want to sign out? Y/N");
@@ -560,6 +566,7 @@ public class UserInterface {
 						stat.execute("UPDATE Users SET Reservation = '0000000000' WHERE Username = '" + username + "'");
 						stat.execute("UPDATE Scooters Set CurrBattCharge = CurrBattCharge - " + chargeDecrease
 								+ " WHERE ScooterID = '" + scooterID + "'");
+						//stat.execute("INSERT INTO History (User, Start, End, Distance, Price, RideType) VALUES ("+username+", "+location+", "+destination+", "+distance+", "+price+", "+scooterID+", Reserve)");
 						Scanner loginCheck = new Scanner(System.in);
 						System.out.println();
 						System.out.printf("%98s", "Do you want to sign out? Y/N");

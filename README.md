@@ -7,7 +7,6 @@
 * Charlie Donaldson - charlesd@iastate.edu
 * Troy Jones - tbjones@iastate.edu
 * Joseph Yang - sims192@iastate.com
-(Add Your name and email)
 ```
 
 

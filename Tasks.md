@@ -55,7 +55,7 @@ Age, etc.)
 ## Scooter Usage
 ### _Troy_
 >* Tracking scooters, reserving, unlocking, transportation of them. Charging and fees
->* You will need to build the database(s) required to track the current location, battery, reservation status and ID number of the scooters at their stations. You can either do this in a SQL database or a .csv
+>* You will need to build the database(s) required to track the current location, battery, reservation status and ID number of the scooters at their stations. You can either do this in a SQL database or a .csv --- (partially done)
 >* Requirements:
 >   * Get username (work with Charlie)
 >   * If Ride Now:

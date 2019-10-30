@@ -8,16 +8,7 @@
 >* Use of Pandas
 >* Useful for analyzing data about popular stations and times they are popular
 >
-> ### Scooter History - _Peter_
->* Store all rides and scooter information into a .csv file
->* Include:
->   * Scooter ID
->   * Trip Distance
->   * Starting and Ending Battery Charge
->   * Starting and Ending Location
->   * User
->   * Time
->   * If reserved or not
+> ### Scooter History - _Peter_ ---Done
 >
 > ### User History - _Bailey_
 >* Store all ride history information into a .csv file
@@ -55,22 +46,22 @@ Age, etc.)
 ## Scooter Usage
 ### _Troy_
 >* Tracking scooters, reserving, unlocking, transportation of them. Charging and fees
->* You will need to build the database(s) required to track the current location, battery, reservation status and ID number of the scooters at their stations. You can either do this in a SQL database or a .csv --- (partially done)
+>* You will need to build the database(s) required to track the current location, battery, reservation status and ID number of the scooters at their stations. You can either do this in a SQL database or a .csv --- (Mostly done, the Scooters.csv file gets location and battery charge updated with the writeScooterHistory.py file. Now we just need to work on getting the input from what the user wants. )
 >* Requirements:
 >   * Get username (work with Charlie)
 >   * If Ride Now:
 >       * Get closest station (eventually we'll work with GPS, for now just manually ask them what station they are at)
->       * Check if station has an available scooter (not reserved, at that station, and battery above certain threshold such as 33%)
+>       * Check if station has an available scooter (not reserved, at that station, and battery above certain threshold such as 33%) and select a random scooter and save the scooter ID
 >       * Ask where they want to go 
->       * Move the scooter to the new station
->       * Mark down battery percentage (you can come up with your own formula for it)
+>       * Move the scooter to the new station --- done
+>       * Mark down battery percentage (you can come up with your own formula for it) --- done, just need to make an advanced battery usage formula
 >   * If Reservation:
 >       * Ask the time they want to reserve
 >       * Ask where they want to reserve
 >       * Verify if there will be a scooter at that location at that time (almost always will be, unless every single scooter is reserved at that time)
 >       * Mark for a scooter to be reserved at that station until 10 minutes after their intended pickup time
 >       * Notify user that a scooter will be available at that time and they have until x to pick it up (x being 10 minutes after their time)
->   * After all transactions are done, update all three History Databases (Scooter, Station(s) and User). Work with Bailey, Joseph and Peter on this.
+>   * After all transactions are done, update all three History Databases (Scooter, Station(s) and User). Work with Bailey, Joseph and Peter on this. --- Scooter History Database is done
 
 
 

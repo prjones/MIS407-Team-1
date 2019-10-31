@@ -23,7 +23,7 @@ cont = True
 tempData = []
 
 
-with open ('Scooters.csv') as scooters:
+with open ('../CSVFiles/Scooters.csv') as scooters:
     reader = csv.reader(scooters)
     for row in reader:
         tempData.append(row)
@@ -39,7 +39,7 @@ with open ('Scooters.csv') as scooters:
 
 #print(tempData)
 while cont:
-    with open ('Distances.csv') as distances:
+    with open ('../CSVFiles/Distances.csv') as distances:
         distanceReader = csv.reader(distances)
         for row in distanceReader:
             if row[0] == startLocation and row[1] == endLocation:
@@ -60,12 +60,12 @@ while cont:
             row[1] = endCharge
             row[2] = endLocation
 
-    with open('Scooters.csv', 'w') as scooterUpdate:
+    with open('../CSVFiles/Scooters.csv', 'w') as scooterUpdate:
         updateWriter = csv.writer(scooterUpdate)
         for row in tempData:
             updateWriter.writerow(row)
 
-    with open('scooterHistory.csv', 'a') as histWrite:
+    with open('../CSVFiles/scooterHistory.csv', 'a') as histWrite:
         historyWriter = csv.writer(histWrite)
         historyWriter.writerow([str(scooterID), str(undockTime), str(redockTime), str(username), int(startCharge), int(endCharge), str(startLocation), str(endLocation), float(distance), float(time), float(cost), str(isReserved)])
     

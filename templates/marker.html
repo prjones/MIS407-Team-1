@@ -1,60 +1,259 @@
-{%extends "maplayout.html"%}
-{%block content%}
-  <head>
+{%extends "maplayout.html"%} {%block content%}
+
+<head>
+    <title>Ryder</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
     <style>
-      /* Set the size of the div element that contains the map */
-      #map {
-        height: 800px;  /* The height is 400 pixels */
-        width: 100%;  /* The width is the width of the web page */
-        float: right;
-       }
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
     </style>
-  </head>
-  <body>
-    <h3>Ryder Stations</h3>
-    <!--The div element for the map -->
+</head>
+
+<body>
     <div id="map"></div>
     <script>
-// Initialize and add the map
-function initMap() {
+        var map, infoWindow;
 
-    // Icon stuff
-  //var iconBase =
-  //      'http://maps.google.com/mapfiles/kml/shapes/poi.png';
+        function initMap() {
 
-  //      var icons = {
-  //        parking: {
-  //          icon: iconBase + 'poi.png'
-  //        }
-  //      }
 
-    // Iowa State lat/long to use for centering
-  var iowaState = {lat: 42.0266187, lng: -93.6464654};
-  // The locations of the Docking Stations
-  var frCourt = {lat: 42.0339213, lng: -93.6430000};
-  var memUnion = {lat: 42.02365, lng: -93.6459455};
-  var library = {lat: 42.0281254, lng: -93.6488141};
-  var kilHall = {lat: 42.0295129, lng: -93.6438587};
-  var stateGym = {lat: 42.0250759, lng: -93.6536049};
-  var mapleLarch = {lat: 42.0237874, lng: -93.6382459};
-  var towers = {lat: 42.015988, lng: -93.649992};
-  
-  // The map, centered at Iowa State
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 15, center: iowaState});
-  
-      // The markers
-  var marker1 = new google.maps.Marker({position: frCourt, map: map});
-  var marker2 = new google.maps.Marker({position: memUnion, map: map});
-  var marker3 = new google.maps.Marker({position: library, map: map});
-  var marker4 = new google.maps.Marker({position: kilHall, map: map});
-  var marker5 = new google.maps.Marker({position: stateGym, map: map});
-  var marker6 = new google.maps.Marker({position: mapleLarch, map: map});
-  var marker7 = new google.maps.Marker({position: towers, map: map});
-}
+            // Iowa State lat/long to use for centering
+            var iowaState = {
+                lat: 42.0266187,
+                lng: -93.6464654
+            };
+            // The locations of the Docking Stations
+            var frCourt = {
+                lat: 42.0339213,
+                lng: -93.6430000
+            };
+            var memUnion = {
+                lat: 42.02365,
+                lng: -93.6459455
+            };
+            var library = {
+                lat: 42.0281254,
+                lng: -93.6488141
+            };
+            var kilHall = {
+                lat: 42.0295129,
+                lng: -93.6438587
+            };
+            var stateGym = {
+                lat: 42.0250759,
+                lng: -93.6536049
+            };
+            var mapleLarch = {
+                lat: 42.0237874,
+                lng: -93.6382459
+            };
+            var towers = {
+                lat: 42.015988,
+                lng: -93.649992
+            };
+            // Styles a map in night mode.
+            var map = new google.maps.Map(document.getElementById('map'), {
+
+                center: {
+                    lat: 42.0266187,
+                    lng: -93.6464654
+                },
+                zoom: 16,
+
+                styles: [{
+                    elementType: 'geometry',
+                    stylers: [{
+                        color: '#212121'
+                    }]
+                }, {
+                    elementType: 'labels.icon',
+                    stylers: [{
+                        visibility: 'off'
+                    }]
+                }, {
+                    elementType: 'labels.text.stroke',
+                    stylers: [{
+                        color: '#212121'
+                    }]
+                }, {
+                    elementType: 'labels.text.fill',
+                    stylers: [{
+                        color: '#757575'
+                    }]
+                }, {
+                    featureType: 'administrative.locality',
+                    elementType: 'labels.text.fill',
+                    stylers: [{
+                        color: '#d59563'
+                    }]
+                }, {
+                    featureType: 'poi',
+                    elementType: 'labels.text.fill',
+                    stylers: [{
+                        color: '#757575'
+                    }]
+                }, {
+                    featureType: 'poi.park',
+                    elementType: 'geometry',
+                    stylers: [{
+                        color: '#181818'
+                    }]
+                }, {
+                    featureType: 'poi.park',
+                    elementType: 'labels.text.fill',
+                    stylers: [{
+                        color: '#6b9a76'
+                    }]
+                }, {
+                    featureType: 'road',
+                    elementType: 'geometry',
+                    stylers: [{
+                        color: '#38414e'
+                    }]
+                }, {
+                    featureType: 'road',
+                    elementType: 'geometry.stroke',
+                    stylers: [{
+                        color: '#212a37'
+                    }]
+                }, {
+                    featureType: 'road',
+                    elementType: 'labels.text.fill',
+                    stylers: [{
+                        color: '#9ca5b3'
+                    }]
+                }, {
+                    featureType: 'road.highway',
+                    elementType: 'geometry',
+                    stylers: [{
+                        color: '#746855'
+                    }]
+                }, {
+                    featureType: 'road.highway',
+                    elementType: 'geometry.stroke',
+                    stylers: [{
+                        color: '#1f2835'
+                    }]
+                }, {
+                    featureType: 'road.highway',
+                    elementType: 'labels.text.fill',
+                    stylers: [{
+                        color: '#f3d19c'
+                    }]
+                }, {
+                    featureType: 'transit',
+                    elementType: 'geometry',
+                    stylers: [{
+                        color: '#2f3948'
+                    }]
+                }, {
+                    featureType: 'transit.station',
+                    elementType: 'labels.text.fill',
+                    stylers: [{
+                        color: '#d59563'
+                    }]
+                }, {
+                    featureType: 'water',
+                    elementType: 'geometry',
+                    stylers: [{
+                        color: '#17263c'
+                    }]
+                }, {
+                    featureType: 'water',
+                    elementType: 'labels.text.fill',
+                    stylers: [{
+                        color: '#515c6d'
+                    }]
+                }, {
+                    featureType: 'water',
+                    elementType: 'labels.text.stroke',
+                    stylers: [{
+                        color: '#17263c'
+                    }]
+                }]
+            });
+            infoWindow = new google.maps.InfoWindow;
+            // The markers
+            var marker1 = new google.maps.Marker({
+                position: frCourt,
+                icon: '/static/images/charging-station.png',
+                map: map
+            });
+            var marker2 = new google.maps.Marker({
+                position: memUnion,
+                icon: '/static/images/charging-station.png',
+                map: map
+            });
+            var marker3 = new google.maps.Marker({
+                position: library,
+                icon: '/static/images/charging-station.png',
+                map: map
+            });
+            var marker4 = new google.maps.Marker({
+                position: kilHall,
+                icon: '/static/images/charging-station.png',
+                map: map
+            });
+            var marker5 = new google.maps.Marker({
+                position: stateGym,
+                icon: '/static/images/charging-station.png',
+                map: map
+            });
+            var marker6 = new google.maps.Marker({
+                position: mapleLarch,
+                icon: '/static/images/charging-station.png',
+                map: map
+            });
+            var marker7 = new google.maps.Marker({
+                position: towers,
+                icon: '/static/images/charging-station.png',
+                map: map
+            });
+        }
+        infoWindow = new google.maps.InfoWindow;
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+
+                infoWindow.setPosition(pos);
+                infoWindow.setContent('Location found.');
+                infoWindow.open(map);
+                map.setCenter(pos);
+            }, function() {
+                handleLocationError(true, infoWindow, map.getCenter());
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
+
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ?
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
+            infoWindow.open(map);
+        }
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9byGYLqCfDxvyapHypnk_6nYDD9wg2qo&callback=initMap">
-    </script>
-  </body>
-  {%endblock%}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9byGYLqCfDxvyapHypnk_6nYDD9wg2qo&callback=initMap" async defer></script>
+</body>
+{%endblock%}

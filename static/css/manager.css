@@ -151,13 +151,14 @@
             height: 600px;
             width: 1200px;
             background-color: #212121;
-            color: fff;
+            color: white;
             border: 0px solid;
             border-radius: 5px 5px 5px 5px;
             border-color: #fff;
             font-size: 15px;
             margin: 5%;
             text-align: center;
+            text-emphasis-color: white;
             font-family: 'Titillium Web';
             font-style: normal;
             font-weight: 300;

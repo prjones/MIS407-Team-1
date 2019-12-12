@@ -1,8 +1,0 @@
-prjones password 21 1234567890123456 21.00 0000000000 manager out
-kjclancy passcode 0 xxxxxxxxxxxxxxxx 0.00 0000000000 manager out
-bpahl passcode 0 xxxxxxxxxxxxxxxx 0.00 0000000000 manager out
-tbjones passcode 0 xxxxxxxxxxxxxxxx 0.00 0000000000 manager out
-user1 passcode1 0 1234567890123456 0.00 0000000000 user out
-user2 passcode2 0 xxxxxxxxxxxxxxxx 0.00 0000000000 user out
-user3 passcode3 0 1234567890123456 0.00 0000000000 user out
-user4 passcode4 0 1234567890123456 0.00 0000000000 user out

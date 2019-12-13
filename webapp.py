@@ -109,6 +109,7 @@ def pickupUpdateUserHistory(username, distance, cost, time):
     c.execute("UPDATE userhistory SET totaldistance='{}', totalcost=totalcost+{}, totaltime=totaltime+{}, tripnum=tripnum+1 WHERE username='{}'".format(distance, cost, time, username))
 
 
+
 WEB_APP_NAME = "Ryder Scooters"
 global user
 user = 'username'
@@ -261,8 +262,24 @@ def reservePage():
     return render_template("reserve.html", content=user)
 
 
+@app.route('/new-user', methods=['POST'])
 
+def createNewUser():
+    firstname = request.form['firstname']
+    lastname = request.form['lastname']
+    username = request.form['username']
+    password = request.form['password']
 
+    c.execute("INSERT INTO users (username, firstname, lastname, password, reservation, undocktime) VALUES ('{}', '{}', '{}', '{}', 'xxxxxxxxxx', 'tttttttttt')".format(username, firstname, lastname, password))
+    c.execute("UPDATE login SET username = '{}'".format(username))
+    c.execute("INSERT INTO userhistory (username, totaldistance, totalcost, totaltime, tripnum) VALUES ('{}', 0, 0, 0, 0)".format(username))
+    conn.commit()
+    return render_template("user_login_ok.html")
+
+@app.route('/new-user', methods=['GET'])
+
+def newUserPage():
+    return render_template("signup_form.html")
 
 
 

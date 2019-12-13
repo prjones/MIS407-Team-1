@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 import markdown as md
 import csv, os
 import sqlite3
@@ -158,7 +158,7 @@ def userLogin():
         conn.commit()
         print("username: " +username)
         
-        return render_template("user_login_ok.html", user=user)
+        return redirect(url_for('user_home'))
 
     elif c.fetchone() == None:
         print("Real bad @ 136")
@@ -166,11 +166,20 @@ def userLogin():
     else:
         print("real bad @ 139")
         return render_template("user_login_form.html", content="Login Failed")
+    
 
 
 @app.route('/login', methods=['GET'])
 def login_page():
     return render_template("user_login_form.html")
+
+@app.route('/userhome', methods=['GET'])
+def user_home():
+    c.execute("SELECT username FROM login")
+    usrnm = c.fetchone()[0]
+    c.execute("SELECT firstname FROM users WHERE username='{}'".format(usrnm))
+    firstName = usrnm
+    return render_template("user_home.html", firstName=usrnm)
 
 @app.route('/managerlogin', methods=['POST'])
 def managerLogin():
@@ -188,7 +197,7 @@ def managerLogin():
         c.execute("UPDATE login SET username = '{}'".format(username))
         print("manager username: "+username)
         conn.commit()
-        return render_template("manager_login_ok.html", user=username)
+        return redirect(url_for('manager_home'))
 
     elif c.fetchone() == None:
         return render_template("manager_login_form.html", content="Login Failed")
@@ -199,6 +208,16 @@ def managerLogin():
 @app.route('/managerlogin', methods=['GET'])
 def manager_login_page():
     return render_template("manager_login_form.html")
+
+@app.route('/managerhome', methods=['GET'])
+def manager_home():
+    c.execute("SELECT username FROM login")
+    usrnm = c.fetchone()[0]
+    c.execute("SELECT firstname FROM users WHERE username='{}'".format(usrnm))
+    firstName = usrnm
+    return render_template("manager_home.html", firstName=usrnm)
+
+
 '''
     User Function Methods
 '''
@@ -232,11 +251,11 @@ def runRide():
     updateUserHistory(username, distance, cost, time) #time im seconds
     chargeScooters(selectedScooterID)
     conn.commit()
-    return render_template("practicewindow.html", content=user)
+    return render_template("ride_confirmation.html", content=user)
 
 @app.route('/ride', methods=['GET'])
 def ridePage():
-    return render_template("rideNow.html")
+    return render_template("rideNow.html") 
 
 
 
@@ -254,7 +273,7 @@ def runReservation():
     markUser(selectedScooterID, username)
     print(selectedScooterID)
     conn.commit()
-    return render_template("practicewindow.html", content=user)
+    return render_template("reserve_confirmation.html", content=user)
 
 @app.route('/reserve', methods=['GET'])
 def reservePage():
@@ -281,7 +300,7 @@ def runPickup():
     c.execute("SELECT startcharge FROM scooters WHERE status='{}'".format(username))
     
     if float(c.fetchone()[0]) == None:
-        return render_template("practicewindow.html", content=user) #make a "No reservation found" page
+        return render_template("no_reservations", content=user) 
     
     else:
         c.execute("SELECT startcharge FROM scooters WHERE status='{}'".format(username))
@@ -302,7 +321,7 @@ def runPickup():
     pickupUpdateUserHistory(username, distance, cost, time) #time im seconds
     conn.commit()
     
-    return render_template("practicewindow.html", content=user)
+    return render_template("pickup_confirmed.html", content=user)
 
 @app.route('/pickup', methods=['GET'])
 def pickupPage():

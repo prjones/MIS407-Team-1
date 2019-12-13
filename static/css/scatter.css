@@ -162,12 +162,42 @@ padding:0;
 color:#fff;
 background-color:#ce554c;
 }
+
 .area {
-float: left;
-background-image: url("/static/images/scatter.png");
-width: 100%;
-height: 100%;
-padding-left:100px;
+    float: left;
+    background-image: url("/static/images/background.jpg");
+    width: 100%;
+    height: 100%;
+    padding-left: 100px;
+}
+
+.box .container {
+    position: fixed;
+    right: 10px;
+    top: 5px;
+    height: 600px;
+    width: 1200px;
+    background-color: #212121;
+    color: white;
+    border: 0px solid;
+    border-radius: 5px 5px 5px 5px;
+    font-size: 15px;
+    margin: 5%;
+    text-align: center;
+    text-emphasis-color: white;
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+}
+
+.box .container img {
+    left: 250px;
+    top: 35;
+    position: fixed;
+    height: 650px;
+    width: 975px;
+    background-image: url("/static/images/scatter.png")
 }
 @font-face {
   font-family: 'Titillium Web';
